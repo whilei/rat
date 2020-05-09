@@ -1,0 +1,38 @@
+bindkey C-r reload
+bindkey j   cursor-down
+bindkey k   cursor-up
+bindkey C-e scroll-down
+bindkey C-y scroll-up
+bindkey C-d page-down
+bindkey C-u page-up
+bindkey g,g cursor-first-line
+bindkey S-g cursor-last-line
+bindkey S-j parent-cursor-down
+bindkey S-k parent-cursor-up
+bindkey q   pop-pager
+bindkey S-q quit
+bindkey M-1 show-one
+bindkey M-2 show-two
+bindkey M-3 show-three
+
+mode files
+  # Find all files (not directories) in the current directory and
+  # annotate with the class "file".
+  annotate match file -- ls -a1p | grep -v /
+
+  # When the cursor is on a line with an annotation of class "file" and
+  # the `enter` key is pressed, run `cat` with the value of the
+  # annotation (the filename) and display the output in a new pager with
+  # mode "preview". 
+  bindkey enter file preview -- >cat $file
+
+  # When the cursor is on a line with an annotation of class "file" and
+  # the `e` key is pressed, open the selected file in vim.
+  bindkey e     file         -- !vim $file
+
+  # When the cursor is on a line with an annotation of class "file" and
+  # Shift + `x` is pressed, delete the file if the user confirms it.
+  bindkey S-x   file         -- ?!rm $file
+end
+
+
