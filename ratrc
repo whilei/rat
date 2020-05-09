@@ -1,19 +1,5 @@
-bindkey C-r reload
-bindkey j   cursor-down
-bindkey k   cursor-up
-bindkey C-e scroll-down
-bindkey C-y scroll-up
-bindkey C-d page-down
-bindkey C-u page-up
-bindkey g,g cursor-first-line
-bindkey S-g cursor-last-line
-bindkey S-j parent-cursor-down
-bindkey S-k parent-cursor-up
-bindkey q   pop-pager
-bindkey S-q quit
-bindkey M-1 show-one
-bindkey M-2 show-two
-bindkey M-3 show-three
+source actions.rat
+source git/git.rat
 
 mode files
   # Find all files (not directories) in the current directory and
@@ -35,4 +21,6 @@ mode files
   bindkey S-x   file         -- ?!rm $file
 end
 
-
+mode gd
+	annotate match 
+end
