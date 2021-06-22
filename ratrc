@@ -21,6 +21,3 @@ mode files
   bindkey S-x   file         -- ?!rm $file
 end
 
-mode gd
-	annotate match 
-end
